@@ -88,9 +88,7 @@ form.addEventListener('submit', (event) => {
     const input = document.getElementById('heartRate');
     const newHeartRate = input.value;
     input.value = '';
-    dates.push(dateOnly)
-    heartRates.push(newHeartRate);
-    console.log(dates);
+    heartRates.push(newHeartRate);;
 
     updateChart(heartChart, dateOnly, newHeartRate);
     addModalData(hrModaltable, dateOnly, newHeartRate);

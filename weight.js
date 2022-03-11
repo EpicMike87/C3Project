@@ -118,7 +118,6 @@ form.addEventListener('submit', (event) => {
     const newWeight = input.value;
     currentWeight = newWeight;
     input.value = '';
-    dates.push(dateOnly)
     weightData.push(newWeight);
     current.innerHTML = `${newWeight}KG`;
     weightMessage.innerHTML = getWeightMessage(targetWeight, currentWeight);
