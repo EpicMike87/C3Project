@@ -58,26 +58,29 @@
                 Max Heart Rate: <b><span id="maxheartrate"></span></b><br>
                 Healthy Range: <b><span id="currentWeight">60-100BPM</span></b><br>
                 <span id="heartratemessage"></span>
-                <form class="m-2">
+                <form class="m-2" id="heartRateForm">
                     <table class="mx-auto">
                         <tr>
                             <td><label for="heartRate">Current Heart Rate (Resting): </label></td>
-                            <td><input type="number" id="weight" maxlength="3" size="3" class="m-1"></td>
-                            <td><button class="btn btn-primary btn-sm m-1">Record</button></td>
+                            <td><input type="text" id="heartRate" maxlength="3" size="3"
+                                    pattern="(4[0-9]|[5-9][0-9]|1[0-9]{2}|2[0-3][0-9]|240)" class="m-1"
+                                    oninvalid="this.setCustomValidity('Enter a value between 40 and 240')"
+                                    oninput="this.setCustomValidity('')" required></td>
+                            <td><button class="btn btn-primary btn-sm m-1" type="submit">Record</button></td>
                         </tr>
                     </table>
                 </form>
                 <button class="btn btn-primary btn-sm m-1" data-toggle="modal" data-target="#heartratedata">View
                     Data</button>
         </div>
-        <div class="modal fade" id="heartratedata" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade pt-5" id="heartratedata" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">All Heart Rate Submissions</h5>
                         <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">X</span>
                         </button>
+                        <h5 class="modal-title mx-auto">All Heart Rate Submissions</h5>
                     </div>
                     <div class="modal-body">
                         <table class="mx-auto" width="80%" id="hrModalData">
@@ -103,7 +106,7 @@
     <footer class="text-center text-white mt-auto" style="background-color: #3B3B3B;">
         <div class="text-center text-white p-4">
             © 2022 Copyright:
-            <a class="text-primary" href="https://thegymthing.co.uk">https://thegymthing.co.uk</a>
+            <a class="text-primary" href="https://dundashealth.co.uk">https://dundashealth.co.uk</a>
         </div>
     </footer>
     <script src="script.js"></script>

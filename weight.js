@@ -1,36 +1,44 @@
 
 //Labels for charts (prototype use only, to be replaced by record submission dates)
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
-const weekdays = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"
+// const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+//     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+// ];
+// const weekdays = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"
+// ];
+const dates = ["01/03/2022", "02/03/2022", "03/03/2022", "04/03/2022", "05/03/2022", "06/03/2022"
 ];
 
-const dates = ["01/03/2022", "02/03/2022", "03/03/2022", "04/03/2022", "05/03/2022", "06/03/2022", "07/03/2022", "08/03/2022", "09/03/2022", "10/03/2022", "11/03/2022", "12/03/2022"
-];
+//Gets current date minus time as String
+function getCurrentDate() {
+    const date = new Date(Date.now()).toLocaleString(); console.log(date);
+    const dateSplit = date.split(",");
+    const dateOnly = dateSplit[0];
+    return dateOnly;
+}
 
+const dateOnly = getCurrentDate();
+let modalRowCounter = 1;
 
 //User data for charts
 const userHeight = 1.76;
 const userAge = 40;
 const userBMI = [];
-const weightData = [75, 75, 73, 74, 71, 69, 68, 66, 66, 67, 64, 63];
+const weightData = [75, 75, 73, 74, 71, 69];
 const calorieData = [1500, 2300, 2000, 2150, 1700, 2500];
 const calorieTarget = 2000;
-const targetWeight = 65;
-const currentWeight = weightData[weightData.length - 1];
-const weightDifference = Math.abs(targetWeight - currentWeight);
+let targetWeight = 65;
+let currentWeight = weightData[weightData.length - 1];
 
 //Fills modal with submission data
 const weightModaltable = document.getElementById('weightModalData');
-let i = 1;
+
 weightData.forEach(function(){
-    const modalRow1 = weightModaltable.insertRow(i);
+    const modalRow1 = weightModaltable.insertRow(modalRowCounter);
     const cell1 = modalRow1.insertCell(0);
-    cell1.innerHTML = dates[i-1];
+    cell1.innerHTML = dates[modalRowCounter-1];
     const cell2 = modalRow1.insertCell(1);
-    cell2.innerHTML = weightData[i-1];
-    i++;
+    cell2.innerHTML = weightData[modalRowCounter-1];
+    modalRowCounter++;
 })
 
 //Calculates BMI and fills array with data
@@ -38,17 +46,21 @@ function getBMI(item, index, arr) {
     userBMI.push((arr[index] / (userHeight * userHeight)).toFixed(2));
 }
 weightData.forEach(getBMI);
+
 //Then get current BMI
 const currentBMI = userBMI[userBMI.length - 1];
 
 //Setting messages for weight section
-document.getElementById('targetWeight').innerHTML = `${targetWeight}KG`;
-document.getElementById('currentWeight').innerHTML = `${currentWeight}KG`;
-const weightMessage = document.getElementById('weightMessage');
+let target = document.getElementById('targetWeight');
+target.innerHTML = `${targetWeight}KG`;
+let current = document.getElementById('currentWeight');
+current.innerHTML = `${currentWeight}KG`;
+let weightMessage = document.getElementById('weightMessage');
 
-
+weightMessage.innerHTML = getWeightMessage(targetWeight, currentWeight);
 
 function getWeightMessage(targetWeight, currentWeight) {
+    const weightDifference = Math.abs(targetWeight - currentWeight);
     if (targetWeight > currentWeight) {
         return `You are <b>${weightDifference}KG</b> below your target`
     }
@@ -66,7 +78,7 @@ const weightChart = new Chart(
     {
         type: 'line',
         data: {
-            labels: months,
+            labels: dates,
             datasets: [{
                 label: 'Weight (KG)',
                 backgroundColor: 'rgb(47, 168, 58)',
@@ -94,4 +106,51 @@ const weightChart = new Chart(
         }
     }
 );
+
+//Add event listener to form to allow dummy data to be submitted
+const form = document.getElementById('weightForm');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const buttonPressed = document.activeElement.id;
+    if(buttonPressed === 'record'){
+    const input = document.getElementById('weight');
+    const newWeight = input.value;
+    currentWeight = newWeight;
+    input.value = '';
+    dates.push(dateOnly)
+    weightData.push(newWeight);
+    current.innerHTML = `${newWeight}KG`;
+    weightMessage.innerHTML = getWeightMessage(targetWeight, currentWeight);
+
+    updateChart(weightChart, dateOnly, currentWeight);
+    addModalData(weightModaltable, dateOnly, currentWeight);
+}
+else if(buttonPressed === 'set'){
+    const input = document.getElementById('target');
+    targetWeight = input.value;
+    input.value = '';
+    weightMessage.innerHTML = getWeightMessage(targetWeight, currentWeight);
+    target.innerHTML = `${targetWeight}KG`;
+}
+});
+
+//Update chart when new data is submitted without reloading page
+function updateChart(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+//Add submitted data to modal table
+function addModalData(table, label, data){
+    const modalRow = table.insertRow(modalRowCounter);
+    const cell = modalRow.insertCell(0);
+    cell.innerHTML = label;
+    const cell2 = modalRow.insertCell(1);
+    cell2.innerHTML = data;
+    modalRowCounter++;
+}
 

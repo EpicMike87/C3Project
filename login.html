@@ -1,74 +1,72 @@
-<DOCTYPE! html>
-    <html>
-
+<!DOCTYPE html>
+<html>
     <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="scss/main.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+            <title>Home - Dundas Health</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+            <link rel="stylesheet" href="scss/main.css">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
     </head>
-
-    <body class="bg-light d-flex flex-column min-vh-100">
-        <div class="sidebar" id="sideNav">
-            <ul>
-                <a href="#">
-                    <li>Home</li>
-                </a>
-                <hr class="solid">
-                <a href="#">
-                    <li>Log In</li>
-                </a>
-                <hr class="solid">
-                <a href="register.html">
-                    <li>Register</li>
-                </a>
-                <hr class="solid">
-                <a href="#">
-                    <li>Contact</li>
-                </a>
-                <hr class="solid">
-            </ul>
-        </div>
-        <nav class="navbar fixed-top navbar-expand-md  bg-primary">
-            <button id="burger" class="text-dark navbar-brand bg-primary" onclick="openSideNav()">☰</button>
-            <a class="navbar-brand text-dark" id="title"></i>Dundas Health</a>
-        </nav>
-        <main class="container-fluid mx-auto text-center bg-light" id="mainContainer">
-            <section class="col-sm bg-white m-1 p-2 rounded border border-secondary mx-auto w-50 text-center">
-                <h1 class="h1">Log in</h1>
-                <form action="dashboard.html" class="p-2">
+        
+        <body class="bg-light d-flex flex-column min-vh-100">
+            <div class="sidebar" id="sideNav">
+                <ul>
+                    <a href="index.html">
+                        <li>Home</li>
+                    </a>
+                    <hr class="solid">
+                    <a href="login.html">
+                        <li>Log In</li>
+                    </a>
+                    <hr class="solid">
+                    <a href="register.html">
+                        <li>Register</li>
+                    </a>
+                    <hr class="solid">
+                    <a href="#">
+                        <li>Contact</li>
+                    </a>
+                    <hr class="solid">
+                </ul>
+            </div>
+            <nav class="navbar fixed-top navbar-expand-md  bg-primary">
+                <button id="burger" class="text-dark navbar-brand bg-primary" onclick="openSideNav()">☰</button>
+                <a class="navbar-brand text-dark" id="title"></i>Dundas Health</a>
+            </nav>
+            <main class="container-fluid mx-auto text-center bg-light" id="mainContainer">
+                <section class="col-sm bg-white m-1 p-2 rounded border border-secondary mx-auto w-50 text-center">
+                    <h1 class="h1">Log in</h1>
+                    <form action="dashboard.html" class="p-2">
                         <div class="form-group d-flex flex-column mx-auto formelement">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Enter email">
                         </div>
-                    <div class="form-group d-flex flex-column mx-auto formelement">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary m-2">Log in</button>
-                </form>
-                <small>Don't have an account? <a href="register.html">register</a></small>
-            </section>
-        </main>
+                        <div class="form-group d-flex flex-column mx-auto formelement">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary m-2">Log in</button>
+                    </form>
+                    <small>Don't have an account? <a href="register.html">register</a></small>
+                </section>
+            </main>
         <footer class="text-center text-white mt-auto" style="background-color: #3B3B3B;">
             <div class="text-center text-white p-4">
                 © 2022 Copyright:
-                <a class="text-primary" href="https://thegymthing.co.uk">https://thegymthing.co.uk</a>
+                <a class="text-primary" href="https://dundashealth.co.uk">https://dundashealth.co.uk</a>
             </div>
         </footer>
         <script src="script.js"></script>
     </body>
-
-    </html>
+</html>

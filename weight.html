@@ -61,36 +61,42 @@
                 Current Weight: <b><span id="currentWeight"></span></b><br>
                 <span id="weightMessage"></span>
 
-                <form class="m-2">
+                <form class="m-2" id="weightForm">
                     <table class="mx-auto">
                         <tr>
                             <td><label for="weight">Current Weight: </label></td>
-                            <td><input type="number" id="weight" maxlength="3" size="3" class="m-1"></td>
-                            <td><button class="btn btn-primary btn-sm m-1">Record</button></td>
+                            <td><input type="text" id="weight" maxlength="3" size="3" class="m-1"
+                                    pattern="(3[5-9]|[4-9]\d|1[0-4]\d|150)"
+                                    oninvalid="this.setCustomValidity('Enter a value between 35 and 150')"
+                                    oninput="this.setCustomValidity('')"></td>
+                            <td><button class="btn btn-primary btn-sm m-1" id="record">Record</button></td>
                         </tr>
                         <tr>
                             <td>
                                 <label for="target">Set New Target: </label>
                             </td>
                             <td>
-                                <input type="number" id="target" maxlength="3" size="3" class="m-1">
+                                <input type="text" id="target" maxlength="3" size="3" class="m-1"
+                                    pattern="(3[5-9]|[4-9]\d|1[0-4]\d|150)"
+                                    oninvalid="this.setCustomValidity('Enter a value between 35 and 150')"
+                                    oninput="this.setCustomValidity('')">
                             </td>
                             <td>
-                                <button class="btn btn-primary btn-sm">Set Target</button>
+                                <button class="btn btn-primary btn-sm" id="set">Set Target</button>
                             </td>
                         </tr>
                     </table>
                 </form>
                 <button class="btn btn-primary btn-sm m-1" data-toggle="modal" data-target="#weightdata">View
                     Data</button>
-                <div class="modal fade" id="weightdata" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade pt-5" id="weightdata" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">All Weight Submissions</h5>
                                 <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">X</span>
                                 </button>
+                                <h5 class="modal-title mx-auto">All Weight Submissions</h5>
                             </div>
                             <div class="modal-body">
                                 <table class="mx-auto" width="80%" id="weightModalData">
@@ -110,13 +116,13 @@
                         </div>
                     </div>
                 </div>
-        </section>
+            </section>
         </div>
     </main>
     <footer class="text-center text-white mt-auto" style="background-color: #3B3B3B;">
         <div class="text-center text-white p-4">
             © 2022 Copyright:
-            <a class="text-primary" href="https://thegymthing.co.uk">https://thegymthing.co.uk</a>
+            <a class="text-primary" href="https://dundashealth.co.uk">https://dundashealth.co.uk</a>
         </div>
     </footer>
     <script src="script.js"></script>
