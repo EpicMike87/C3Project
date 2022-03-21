@@ -7,13 +7,15 @@ const dates = ["01/03/2022", "02/03/2022", "03/03/2022", "04/03/2022", "05/03/20
 
 //Gets current date minus time as String
 function getCurrentDate() {
-    const date = new Date(Date.now()).toLocaleString(); console.log(date);
+    const date = new Date(Date.now()).toLocaleString();
     const dateSplit = date.split(",");
     const dateOnly = dateSplit[0];
     return dateOnly;
 }
 
 const dateOnly = getCurrentDate();
+
+//To track current row of data in modal table
 let modalRowCounter = 1;
 
 const hrModaltable = document.getElementById('hrModalData');
@@ -88,8 +90,8 @@ form.addEventListener('submit', (event) => {
     const input = document.getElementById('heartRate');
     const newHeartRate = input.value;
     input.value = '';
-    heartRates.push(newHeartRate);;
-
+    heartRates.push(newHeartRate);
+    dates.push(dateOnly);
     updateChart(heartChart, dateOnly, newHeartRate);
     addModalData(hrModaltable, dateOnly, newHeartRate);
     currentRate = newHeartRate;
@@ -97,16 +99,12 @@ form.addEventListener('submit', (event) => {
 });
 
 //Update chart when new data is submitted without reloading page
-function updateChart(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
+function updateChart(chart) {
     chart.update();
 }
 
 //Add submitted data to modal table
-function addModalData(table, label, data){
+function addModalData(table, label, data) {
     const modalRow = table.insertRow(modalRowCounter);
     const cell = modalRow.insertCell(0);
     cell.innerHTML = label;

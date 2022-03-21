@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Heart Rate</title>
+    <title>Heart Rate - Dundas Health</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="scss/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/218320a513.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -22,26 +23,38 @@
 
 <body class="bg-light d-flex flex-column min-vh-100">
     <!-- Sidebar navigation. Hidden by default and toggled by burger button -->
-    <div class="sidebar" id="sideNav">
+    <nav class="sidebar" id="sideNav">
         <ul>
             <a href="dashboard.html">
-                <li>Home</li>
+                <li>
+                <div class="d-flex justify-content-left align-items-center"><i class="fa-solid fa-house mx-2"
+                        style="font-size: 0.9rem"></i>Home
+                </div>
+                </li>
             </a>
             <hr class="solid">
             <a href="#">
-                <li>My Profile</li>
+                <li>
+                    <div class="d-flex justify-content-left align-items-center"><i class="fa-solid fa-user mx-2"
+                            style="font-size: 0.9rem"></i>My Profile
+                    </div>
+                </li>
             </a>
             <hr class="solid">
             <a href="#">
-                <li>Account Management</li>
+                <li><div class="d-flex justify-content-left align-items-center"><i class="fa-solid fa-user-gear mx-2"
+                    style="font-size: 0.9rem"></i>Account Management
+            </div></li>
             </a>
             <hr class="solid">
             <a href="login.html">
-                <li>Log Out</li>
+                <li><div class="d-flex justify-content-left align-items-center"><i class="fa-solid fa-door-open mx-2"
+                    style="font-size: 0.9rem"></i>Log Out
+            </div></li>
             </a>
             <hr class="solid">
         </ul>
-    </div>
+    </nav>
     <!-- Top navigation bar with burger for side nav and logout button -->
     <nav class="navbar fixed-top navbar-expand-md  bg-primary">
         <button id="burger" class="text-dark navbar-brand bg-primary" onclick="openSideNav()">☰</button>
@@ -56,7 +69,7 @@
                     <canvas id="heartchart" class="m-3"></canvas>
                 </div>
                 Max Heart Rate: <b><span id="maxheartrate"></span></b><br>
-                Healthy Range: <b><span id="currentWeight">60-100BPM</span></b><br>
+                Healthy Resting Range: <b><span id="currentWeight">60-100BPM</span></b><br>
                 <span id="heartratemessage"></span>
                 <form class="m-2" id="heartRateForm">
                     <table class="mx-auto">
